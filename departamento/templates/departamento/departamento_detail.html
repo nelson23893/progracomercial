@@ -1,0 +1,20 @@
+{% extends 'jugadores/base.html' %}
+
+{% block content %}
+    <div class="post">
+        <a class="btn btn-default" href="{% url 'departamento_edit' pk=post.pk %}">Acutalizar</a>
+        <a class="btn btn-default" href="{% url 'departamento_delete' pk=post.pk %}">Delete</a>
+        <h1>{{ post.nombre }}</h1>
+        <p>{{ post.anio|linebreaksbr }} {{ post.compania|linebreaksbr }}</p>
+        <h1>Empleados que lo utilizan</h1>
+        <div class="post">
+        <ul>
+        {% for main in mains %}
+        <li>
+            <p><a href="{% url 'empleado_details' pk=main.pk %}">{{ main.empleado }}</a></p>
+        </li>
+        {% endfor %}
+        </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'jugadores/base.html' %}
+
+{% block content %}
+    <div class="post">
+        <a class="btn btn-default" href="{% url 'jugador_edit' pk=departamento.pk %}">Acutalizar</a>
+        <a class="btn btn-default" href="{% url 'jugador_delete' pk=departamento.pk %}">Eliminar</a>
+        <h1>{{ departamento.nombre }}</h1>
+        <p>Anio: {{ departamento.anio|linebreaksbr }}</p>
+        <p>Consola: {{ departamento.consola|linebreaksbr }}</p>
+    </div>
+    <h1>Empleados con los que juega</h1>
+    <div class="post">
+    <ul>
+    {% for main in mains %}
+    <li>
+        <p><a href="{% url 'empleado_details' pk=main.pk %}">{{ main.empleado }}</a></p>
+    </li>
+    {% endfor %}
+    </ul>
+    </div>
+
+{% endblock %}
